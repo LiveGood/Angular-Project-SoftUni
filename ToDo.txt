@@ -1,1 +1,4 @@
 1. Intialize Repo
+2. Create project Skeleton
+3. Learn some bootsrap
+4. Create homePage

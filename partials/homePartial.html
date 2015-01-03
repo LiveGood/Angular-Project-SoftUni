@@ -14,7 +14,7 @@
 
         <nav class="collapse navbar-collapse navbar-right navHeaderCollapse">
             <ul class="nav navbar-nav">
-                <li><a href="#/home"></a></li>
+                <li><a href="#/home">Home</a></li>
                 <li><a href="#/login">Login</a></li>
                 <li><a href="#/register">Register</a></li>
             </ul>
@@ -22,3 +22,57 @@
 
     </div>
 </header>
+<script>
+    var ad = {
+        "id": 120,
+        "title": "Changed Ad Title",
+        "text": "Changed ad text content",
+        "date": "2015-01-01T20:07:33.0000000",
+        "imageDataUrl": "data:image/jpeg;base64,iVBORw0KGgo...",
+        "ownerName": "Test User",
+        "ownerEmail": "nakov@gmail.com",
+        "ownerPhone": "+359 2 981 981",
+        "categoryId": 5,
+        "townId": 2
+    }
+</script>
+
+<main class="container" >
+    <div class="col-sm-3 col-xs-6">
+        <div class="thumbnail text-center">
+            <h3>Categories</h3>
+            <hr/>
+            <div ng-repeat="category in categories">
+                <p><a href="#">{{ category.name }}</a></p>
+            </div>
+        </div>
+
+        <div class="thumbnail text-center">
+            <h3>Towns</h3>
+            <hr/>
+            <div ng-repeat="town in towns">
+                <p><a href="#">{{ town.name }}</a></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-7 panel">
+        <div class="panel panel-body" ng-repeat="ad in ads">
+            <h3 class="col-sm-10 col-xs-10 pull-left adHeading">{{ ad.title }}</h3>
+            <div class="col-sm-2  col-xs-2 adDate">{{ ad.date | date:'d-MMM-yyyy' }}</div>
+            <img class="col-sm-3 col-xs-3 img-thumbnail pull-left adImage" ng-src="{{ ad.imageDataUrl | imageFilter:this }}" src="" alt="Ad picture"/>
+            <div class="col-sm-8 col-xs-8 infoContainer">
+                <div class="panel panel-body">{{ ad.text }}</div>
+                <div><span class="pull-left col-sm-2 infoLabel">Name: </span><div>{{ ad.ownerName }}</div> </div>
+                <div><span class="pull-left col-sm-2 infoLabel">Email: </span><div>{{ ad.ownerEmail }}</div> </div>
+                <div><span class="pull-left col-sm-2 infoLabel">Tel: </span><div>{{ ad.ownerPhone }}</div></div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer class="navbar navbar-default navbar-static-bottom">
+    <div class="container">
+        <p class="navbar-text">2014 By Software University Foundation.</p>
+    </div>
+</footer>

@@ -1,0 +1,29 @@
+/*    --------------------------------------------------
+	:: Login Section
+	-------------------------------------------------- */
+#login .form-wrap {
+    float: none;
+    margin: 0 auto;
+}
+#login h1 {
+    color: #777;
+    font-size: 18px;
+    text-align: center;
+    font-weight: bold;
+    padding-bottom: 20px;
+}
+
+.form-group > label {
+    color: #777;
+}
+
+/*    --------------------------------------------------
+	:: Inputs & Buttons
+	-------------------------------------------------- */
+.btn-custom {
+    margin-bottom: 25px;
+}
+.btn-custom:hover,
+.btn-custom:focus {
+    color: #fff;
+}

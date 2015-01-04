@@ -1,48 +1,10 @@
-<header class="navbar navbar-default navbar-static-top">
-    <div class="container">
 
-        <a href="#/" class="navbar-brand logo">Ads</a>
-
-        <div class="navbar-header">
-            <button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
-                <!--<span class="sr-only">Toggle navigation</span>-->
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-        </div>
-
-        <nav class="collapse navbar-collapse navbar-right navHeaderCollapse">
-            <ul class="nav navbar-nav">
-                <li><a href="#/home">Home</a></li>
-                <li><a href="#/login">Login</a></li>
-                <li><a href="#/register">Register</a></li>
-            </ul>
-        </nav>
-
-    </div>
-</header>
-<script>
-    var ad = {
-        "id": 120,
-        "title": "Changed Ad Title",
-        "text": "Changed ad text content",
-        "date": "2015-01-01T20:07:33.0000000",
-        "imageDataUrl": "data:image/jpeg;base64,iVBORw0KGgo...",
-        "ownerName": "Test User",
-        "ownerEmail": "nakov@gmail.com",
-        "ownerPhone": "+359 2 981 981",
-        "categoryId": 5,
-        "townId": 2
-    }
-</script>
-
-<main class="container" >
+<main class="container">
     <div class="col-sm-3 col-xs-6">
         <div class="thumbnail text-center">
             <h3>Categories</h3>
             <hr/>
-            <div ng-repeat="category in categories">
+            <div ng-repeat="category in categories | limitTo: 5">
                 <p><a href="#">{{ category.name }}</a></p>
             </div>
         </div>
@@ -50,14 +12,14 @@
         <div class="thumbnail text-center">
             <h3>Towns</h3>
             <hr/>
-            <div ng-repeat="town in towns">
+            <div ng-repeat="town in towns | limitTo: 5">
                 <p><a href="#">{{ town.name }}</a></p>
             </div>
         </div>
     </div>
 
     <div class="col-sm-7 panel">
-        <div class="panel panel-body" ng-repeat="ad in ads">
+        <div class="panel panel-body" ng-repeat="ad in ads | limitTo:5">
             <h3 class="col-sm-10 col-xs-10 pull-left adHeading">{{ ad.title }}</h3>
             <div class="col-sm-2  col-xs-2 adDate">{{ ad.date | date:'d-MMM-yyyy' }}</div>
             <img class="col-sm-3 col-xs-3 img-thumbnail pull-left adImage" ng-src="{{ ad.imageDataUrl | imageFilter:this }}" src="" alt="Ad picture"/>
@@ -68,11 +30,14 @@
                 <div><span class="pull-left col-sm-2 infoLabel">Tel: </span><div>{{ ad.ownerPhone }}</div></div>
             </div>
         </div>
+        <pagination
+                total-items="totalItems" ng-model="currentPage"
+                items-per-page="5"
+                max-size="8"
+                boundary-links="true"
+                ng-click="changePage()"></pagination>
     </div>
+
 </main>
 
-<footer class="navbar navbar-default navbar-static-bottom">
-    <div class="container">
-        <p class="navbar-text">2014 By Software University Foundation.</p>
-    </div>
-</footer>
+

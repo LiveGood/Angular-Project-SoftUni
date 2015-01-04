@@ -1,25 +1,46 @@
 
 
 adApp.controller('HomeController', function ($scope, $http) {
-   $http.get('http://softuni-ads.azurewebsites.net/api/ads')
+   var sc = $scope;
+
+   sc.baseAdsUrl = 'http://softuni-ads.azurewebsites.net/api/ads';
+   sc.currentPage = 1;
+   sc.allAds = {};
+
+   $http.get(sc.baseAdsUrl + '?pagesize=5')
       .success(function(data) {
-         $scope.fullAdsObj = data;
-          $scope.ads = data['ads'];
+          sc.ads = data['ads'];
+          sc.allAds[sc.currentPage] = sc.ads;
+          sc.totalItems = data['numItems'];
       });
 
    $http.get('http://softuni-ads.azurewebsites.net/api/categories')
        .success(function(categories) {
-          $scope.categories = categories;
+          sc.categories = categories;
        });
 
    $http.get('http://softuni-ads.azurewebsites.net/api/towns')
        .success(function(data) {
-          $scope.towns = data;
+          sc.towns = data;
        });
 
-   $scope.noImageUrl = "app/imgs/No_image_available.jpg";
+   sc.noImageUrl = "app/imgs/No_image_available.jpg";
 
-   $scope.ad = {
+   sc.changePage = function() {
+
+      if (sc.allAds[sc.currentPage]) {
+         sc.ads = sc.allAds[sc.currentPage];
+         return;
+      }
+
+      $http.get(sc.baseAdsUrl + '?pagesize=5&startpage=' + sc.currentPage)
+          .success(function(data) {
+             sc.ads = data['ads'];
+             sc.allAds[sc.currentPage] = sc.ads;
+          })
+   };
+
+   sc.ad = {
       "id": 120,
       "title": "Changed Ad Title",
       "text": "Changed ad text content",

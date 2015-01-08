@@ -46,3 +46,7 @@ h3.adHeading {
     text-align: right;
     margin-right: 10px;
 }
+
+#headerUsername {
+    color: #337ab7;
+}

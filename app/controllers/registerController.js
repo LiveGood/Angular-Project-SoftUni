@@ -1,6 +1,7 @@
 
 adApp.controller('RegisterController', function ($scope, $location, authenticationService, dataService) {
     $scope.register = function(userData) {
+        userData.townId = userData.townId.id;
         authenticationService.register(userData,
             function success(data) {
                 alert("Register successful");
@@ -15,7 +16,9 @@ adApp.controller('RegisterController', function ($scope, $location, authenticati
         )
     };
 
-    $scope.towns = dataService.getTowns();
-    window.towns = $scope.towns;
+    $scope.towns = dataService.towns;
+    $scope.userData = {};
+    $scope.userData.townId = {value: 0, label: 'Select town'};
+
 
 });

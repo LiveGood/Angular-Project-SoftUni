@@ -14,5 +14,5 @@ adApp.controller('LoginController',
                 }
 
             )
-        };
+    };
 });

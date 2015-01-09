@@ -1,10 +1,10 @@
 
-adApp.filter('imageFilter', function() {
-    var filter = function(url, scope) {
+adApp.filter('imageFilter', function(noImageUrl) {
+    var filter = function(url) {
         if (url) {
             return url;
         }
-        return scope.noImageUrl;
+        return noImageUrl;
     };
 
     return filter;

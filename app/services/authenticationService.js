@@ -47,11 +47,24 @@ adApp.factory('authenticationService', function($http, baseUrl) {
             });
     }
 
+    function getUser() {
+        return JSON.parse(sessionStorage['currentUser']);
+    }
+
+    function getAuthHeaders() {
+        var user = getUser();
+        var accessToken = user['access_token'];
+        return {
+            'Authorization': 'Bearer ' + accessToken
+        }
+    }
+
     return {
         login: login,
         isLoggedIn: isLoggedIn,
         getUsername: getUsername,
         logout: logout,
-        register: register
+        register: register,
+        getAuthHeaders: getAuthHeaders
     }
 });

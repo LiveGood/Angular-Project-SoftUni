@@ -1,7 +1,7 @@
-<section id="login">
+<section id="formSection">
     <div class="container">
         <div class="row">
-            <div class="form-wrap col-sm-6 col-xs-12">
+            <div class="form-wrap col-sm-4 col-xs-12">
                 <h1>Register</h1>
                 <form role="form" name="loginForm" id="loginForm">
                     <div class="form-group">
@@ -17,14 +17,21 @@
                                placeholder="Password">
                     </div>
                     <div class="form-group">
-                        <label for="email">Confirm Password</label>
-                        <input type="text" ng-model="userData.email"
-                               id="email" class="form-control"
+                        <label for="confirmPassword">Confirm Password</label>
+                        <input type="password" ng-model="userData.confirmPassword"
+                               id="confirmPassword" class="form-control"
                                placeholder="Password">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" ng-model="userData.email"
+                               id="email" class="form-control"
+                               placeholder="Email">
                     </div>
                     <div class="form-group">
                         <label for="name">Name</label>
-                        <input type="password" ng-model="userData.name"
+                        <input type="text" ng-model="userData.name"
                                id="name" class="form-control"
                                placeholder="Name">
                     </div>
@@ -39,7 +46,7 @@
                     <div class="form-group">
                         <label for="towns">Towns</label>
                         <select ng-options="town.name for town in towns track by town.id"
-                                id="towns"  ng-model="userData.townId.id">
+                                id="towns"  ng-model="userData.townId">
                             <option value="All">Select town</option>
                         </select>
                     </div>

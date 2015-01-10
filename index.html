@@ -9,7 +9,7 @@
 </head>
 <body>
 
-<div header></div>
+<div ng-include="'app/partials/header.html'"></div>
 
 <div id="wrapper" ng-view ng-cloak>
 
@@ -41,10 +41,10 @@
 <script src="app/controllers/leftSidebarController.js"></script>
 <script src="app/controllers/rightSidebarController.js"></script>
 <script src="app/controllers/publishAdController.js"></script>
+<script src="app/controllers/userAdsController.js"></script>
 
 <script src="app/filters/imageFilter.js"></script>
 
-<script src="app/directives/header.js"></script>
 <script src="app/directives/leftSidebar.js"></script>
 <script src="app/directives/rightSidebar.js"></script>
 </body>

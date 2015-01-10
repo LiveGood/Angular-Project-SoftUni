@@ -1,37 +1,53 @@
+<!--<!DOCTYPE html>-->
+<!--<html data-ng-app="app">-->
+<!--<head lang="en">-->
+    <!--<meta charset="UTF-8">-->
+    <!--<title></title>-->
+<!--</head>-->
+<!--<body ng-controller="MainCtrl">-->
+<!--<section ui-view></section>-->
+
+<!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.7/angular.js"></script>-->
+<!--<script src="https://angular-ui.github.io/ui-router/release/angular-ui-router.js"></script>-->
+<!--<script>-->
+    <!--var app = angular.module('app', ['ui.router']);-->
+    <!--app.config(function($stateProvider, $urlRouterProvider) {-->
+        <!--$urlRouterProvider.otherwise('/root')-->
+        <!--$stateProvider.state('root', {-->
+            <!--url: '/root',-->
+            <!--template: '<h1>My Contacts</h1>'-->
+        <!--})-->
+    <!--});-->
+    <!--app.controller('MainCtrl', function($scope) {-->
+        <!--console.log('hi');-->
+    <!--});-->
+
+<!--</script>-->
+<!--</body>-->
+</html>
 <!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
+<html ng-app="app">
+
+<head>
+    <title>AngularJS: UI-Router Quick Start</title>
+    <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
-<label for="food">Food</label>
-<input id="food" type="text"/>
-<div id="output"></div>
+
+<body class="container">
+
+<div class="well" ui-view></div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.7/angular.js"></script>
+<script src="https://angular-ui.github.io/ui-router/release/angular-ui-router.js"></script>
 <script>
-    var xmlHttp = new XMLHttpRequest();
-
-    var food = document.getElementById('food');
-    food.onkeydown = function(ev) {
-        if (ev.keyCode == 13) {
-            process();
-        }
-    };
-
-    function process() {
-        if (xmlHttp.readyState == 0 || xmlHttp.readyState == 4) {
-            var out = food.value;
-            document.getElementById('output').innerHTML = escapeHTML(out);
-        }
-    }
-
-    function escapeHTML(text) {
-        var div = document
-            .createElement('div')
-            .appendChild(document.createTextNode(text));
-        return div.innerHTML;
-
-    }
+    var myapp = angular.module('app', ["ui.router"])
+    myapp.config(function($stateProvider, $urlRouterProvider){
+        $urlRouterProvider.otherwise("/route1")
+        $stateProvider.state('route1', {
+            url: "/route1",
+            template: "<h1>Route 1</h1>"
+        })
+    })
 </script>
 </body>
 </html>

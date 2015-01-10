@@ -18,7 +18,6 @@ adApp.controller('RegisterController', function ($scope, $location, authenticati
 
     $scope.towns = dataService.towns;
     $scope.userData = {};
-    $scope.userData.townId = {value: 0, label: 'Select town'};
-
+    $scope.userData.townId = 'Select town';
 
 });

@@ -37,6 +37,10 @@ adApp.config(function($routeProvider) {
            templateUrl: 'app/partials/publishAd.html',
            controller: 'PublishAdController'
        })
+       .when('/user/edit', {
+            templateUrl: 'app/partials/editProfile.html',
+            controller: 'EditProfileController'
+       })
       .otherwise({ redirectTo: '/home' })
 });
 

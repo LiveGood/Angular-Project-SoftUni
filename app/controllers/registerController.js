@@ -6,7 +6,7 @@ adApp.controller('RegisterController', function ($scope, $location, authenticati
             function success(data) {
                 alert("Register successful");
                 console.log(data);
-                $location.path('/');
+                $location.path('/home');
             },
             function(error) {
                 alert('Unsuccessful register');
